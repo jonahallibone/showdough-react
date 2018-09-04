@@ -1,16 +1,20 @@
 import React from 'react';
 import { StyleSheet} from 'react-native';
-import { createStackNavigator} from 'react-navigation';
 import { HomeScreen } from './components/HomeScreen/HomeScreen'
+import { SinglePost } from './components/SinglePost/SinglePost'
 import { ProfileScreen } from './components/ProfileScreen/ProfileScreen'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator } from 'react-navigation';
+import { createStackNavigator} from 'react-navigation';
 
-
+const HomeStack = createStackNavigator({
+  Home: HomeScreen,
+  Post: SinglePost
+})
 
 export default createBottomTabNavigator(
   {
-    Home: HomeScreen,
+    Events: HomeStack,
     Profile: ProfileScreen,
   },
   {
@@ -18,7 +22,7 @@ export default createBottomTabNavigator(
       tabBarIcon: ({ focused, tintColor }) => {
         const { routeName } = navigation.state;
         let iconName;
-        if (routeName === 'Home') {
+        if (routeName === 'Events') {
           iconName = `ios-information-circle${focused ? '' : '-outline'}`;
         } else if (routeName === 'Profile') {
           iconName = `ios-options${focused ? '' : '-outline'}`;
@@ -45,4 +49,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, NavigatorIOS, View, Text, FlatList, Image} from 'react-native';
 import { PostItem } from '../PostItem/PostItem';
-
+import { Container, Header, Content, Left, Body, Right, Title } from "native-base";
 
 export class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -13,16 +13,22 @@ export class HomeScreen extends React.Component {
     this.state = {
       posts: [
         {
-          title: "Test Post!",
-          index: 0
+          title: "Wine Tasting!",
+          content: "On September 24th, please come try some wine and have a great time!",
+          index: 0,
+          img: 'https://d2azv234xtg0bl.cloudfront.net/wp-content/uploads/2016/03/winepour-e1457507312788-696x509.jpg'
         },
         {
-          title: "Test Post!",
-          index: 1
+          title: "Jewlery Showcase",
+          content: "On September 24th, please come try some wine and have a great time!",
+          index: 1,
+          img: 'https://d2azv234xtg0bl.cloudfront.net/wp-content/uploads/2016/03/winepour-e1457507312788-696x509.jpg'
         },
         {
-          title: "Test Post!",
-          index: 2
+          title: "Food!",
+          content: "On September 24th, please come try some wine and have a great time!",
+          index: 2,
+          img: 'https://d2azv234xtg0bl.cloudfront.net/wp-content/uploads/2016/03/winepour-e1457507312788-696x509.jpg'
         }
       ]
     };
@@ -35,18 +41,27 @@ export class HomeScreen extends React.Component {
     <PostItem
       id={item.id}
       onPressItem={this._onPressItem}
-      selected={!!this.state.selected.get(item.id)}
       title={item.title}
+      content={item.content}
+      img={item.img}
+      item={item}
+      navigation = {this.props.navigation}
     />
   );
 
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <FlatList
-        data={this.state.posts}
-        renderItem={({item}) => <Text>{item.title}</Text>}
-      />
+      <Container>
+        <Content style={{padding: 20}}>
+          <FlatList
+            data={this.state.posts}
+            renderItem={this._renderItem}
+            keyExtractor={(item, index) => index.toString()}
+            style={{overflow: 'visible', paddingBottom: 20}}
+          />
+        </Content>
+      </Container>
     );
   }
 }
