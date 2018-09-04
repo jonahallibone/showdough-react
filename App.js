@@ -3,19 +3,21 @@ import { StyleSheet} from 'react-native';
 import { HomeScreen } from './components/HomeScreen/HomeScreen'
 import { SinglePost } from './components/SinglePost/SinglePost'
 import { ProfileScreen } from './components/ProfileScreen/ProfileScreen'
+import { ScannerScreen } from './components/ScannerScreen/ScannerScreen'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator } from 'react-navigation';
 import { createStackNavigator} from 'react-navigation';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
-  Post: SinglePost
+  Post: SinglePost,
 })
 
 export default createBottomTabNavigator(
   {
     Events: HomeStack,
     Profile: ProfileScreen,
+    Scanner: ScannerScreen
   },
   {
     navigationOptions: ({ navigation }) => ({
@@ -26,6 +28,9 @@ export default createBottomTabNavigator(
           iconName = `ios-information-circle${focused ? '' : '-outline'}`;
         } else if (routeName === 'Profile') {
           iconName = `ios-options${focused ? '' : '-outline'}`;
+        }
+        else if (routeName === 'Scanner') {
+          iconName = `ios-qr-scanner${focused ? '' : '-outline'}`;
         }
 
         // You can return any component that you like here! We usually use an

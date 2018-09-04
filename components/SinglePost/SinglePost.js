@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Image, StyleSheet, NavigatorIOS, TouchableOpacity, StatusBar, ScrollView } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { Container, Header, Content, Card, CardItem, Text, Body, StyleProvider, View, Left, Right, Button, Icon } from 'native-base';
+import { Container, Header, Content, Card, CardItem, Text, Title, Body, StyleProvider, View, Left, Right, Button, Icon } from 'native-base';
 import { SafeAreaView } from 'react-navigation';
 import { MapView } from 'expo';
 
@@ -27,7 +27,7 @@ export class SinglePost extends React.Component {
             </Button>
           </Left>
           <Body>
-            <Text style={{color: "#FFF", fontWeight: "bold"}}>{this.props.navigation.state.params.post.title}</Text>
+            <Title style={{color: "#FFF"}}>{this.props.navigation.state.params.post.title}</Title>
           </Body>
           <Right/>
         </Header>
@@ -149,7 +149,7 @@ const cardTheme = {
   },
   'NativeBase.Text' : {
     '.customStyleText': {
-      fontSize: 16
+      fontSize: 18
     }
   }
 }

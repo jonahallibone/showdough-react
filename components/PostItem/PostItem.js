@@ -113,7 +113,7 @@ const cardTheme = {
   },
   'NativeBase.Text' : {
     '.customStyleText': {
-      fontSize: 16
+      fontSize: 18
     }
   },
   'NativeBase.Button' :{

@@ -5,7 +5,7 @@ import { Container, Header, Content, Left, Body, Right, Title } from "native-bas
 
 export class HomeScreen extends React.Component {
   static navigationOptions = {
-    title: 'Home',
+    header: null
   };
 
   constructor(props) {
@@ -53,6 +53,13 @@ export class HomeScreen extends React.Component {
     const { navigate } = this.props.navigation;
     return (
       <Container>
+        <Header style={{backgroundColor: "#26de81", borderBottomColor: 'transparent'}}>
+          <Left/>
+          <Body>
+            <Title style={{color: "#FFF"}}>Events</Title>
+          </Body>
+          <Right/>
+        </Header>
         <Content style={{padding: 20}}>
           <FlatList
             data={this.state.posts}
